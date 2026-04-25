@@ -1,2 +1,2 @@
 # AkiraForge
-Enterprise AI Application with Security, Audit Logging, and Database Migration
+an AI application made by connor napier year 7 2026
