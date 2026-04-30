@@ -1,0 +1,17 @@
+[2026-04-10 11:22:00.480577] [SYSTEM] [INFO] LoginManager connected to database
+[2026-04-10 11:22:16.352617] [LOGIN] [WARNING] Invalid login: user 'bob' not found (user=bob) (ip=0.0.0.0)
+[2026-04-10 11:22:59.999225] [LOGIN] [INFO] Admin logged in (machine‑locked): admin (user=admin) (ip=0.0.0.0)
+[2026-04-10 11:23:16.561980] [SIGNUP] [WARNING] Signup request 2 declined
+[2026-04-10 11:23:18.716525] [SIGNUP] [WARNING] Admin declined signup for 'pickles123' (user=pickles123)
+[2026-04-10 11:23:23.023175] [SIGNUP] [WARNING] Signup request 1 declined
+[2026-04-10 11:23:24.142372] [SIGNUP] [WARNING] Admin declined signup for 'bob' (user=bob)
+[2026-04-10 11:23:28.440580] [SIGNUP] [WARNING] Signup request 3 declined
+[2026-04-10 11:23:29.477524] [SIGNUP] [WARNING] Admin declined signup for 'bob' (user=bob)
+[2026-04-10 11:23:33.458773] [SIGNUP] [WARNING] Signup request 4 declined
+[2026-04-10 11:23:34.602425] [SIGNUP] [WARNING] Admin declined signup for 'dad' (user=dad)
+[2026-04-10 11:23:39.294871] [SIGNUP] [WARNING] Signup request 5 declined
+[2026-04-10 11:23:40.424186] [SIGNUP] [WARNING] Admin declined signup for 'thebest' (user=thebest)
+[2026-04-10 11:25:26.121076] [SYSTEM] [INFO] LoginManager connected to database
+[2026-04-10 11:25:36.236973] [LOGIN] [WARNING] Invalid login: user 'bob' not found (user=bob) (ip=0.0.0.0)
+[2026-04-10 11:26:19.515355] [LOGIN] [INFO] Admin logged in (machine‑locked): admin (user=admin) (ip=0.0.0.0)
+[2026-04-10 11:26:36.652722] [SIGNUP] [ERROR] Failed to approve user 'bob': 'name'

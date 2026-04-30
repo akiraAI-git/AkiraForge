@@ -1,0 +1,14 @@
+{
+    "theme_color": "dark",
+    "custom_hex": "",
+    "font_size": 14,
+    "bubble_style": "copilot",
+    "bubble_width": "full",
+    "default_mode": "General",
+    "title_mode": "auto",
+    "sidebar_auto": "off",
+    "thinking_indicator": "on",
+    "enter_to_send": "on",
+    "auto_scroll": "on",
+    "smooth_animations": "on"
+}

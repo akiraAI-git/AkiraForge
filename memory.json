@@ -1,0 +1,21 @@
+{
+    "conversations": {
+        "1": {
+            "id": "1",
+            "title": "New Chat",
+            "mode": "General",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "hello",
+                    "timestamp": "2026-04-09T12:32:37.298073"
+                },
+                {
+                    "role": "assistant",
+                    "content": "Hello. It's nice to meet you. Is there something I can help you with, or would you like to chat?",
+                    "timestamp": "2026-04-09T12:32:38.629724"
+                }
+            ]
+        }
+    }
+}
