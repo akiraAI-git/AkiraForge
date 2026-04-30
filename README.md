@@ -48,6 +48,17 @@
 - **Automated CI/CD** - GitHub Actions pipeline for continuous testing
 - **Email Alerts** - SendGrid integration for notifications
 
+### 🆕 Advanced Features (v1.1.3+)
+- **Plugin System** - Extensible architecture for third-party plugins
+- **Advanced Caching** - In-memory and persistent caching with TTL and patternmatching
+- **Feature Flags** - Dynamic feature toggles with user-level rollout control
+- **Background Tasks** - Async task queue with retries and scheduling
+- **Webhook System** - Event-driven integrations with automatic retry and signature verification
+- **Health Checks** - Comprehensive system monitoring (CPU, memory, disk, database)
+- **Advanced Analytics** - Event tracking, user analytics, error analysis, and reporting
+- **Configuration Hot-Reload** - Update settings without restarting application
+- **API Documentation** - Auto-generated OpenAPI/Swagger documentation
+
 ## 🛠️ Installation
 
 ### Requirements
@@ -147,7 +158,213 @@ enable_offline_mode = true
 enable_memory_system = true
 ```
 
-## 🚀 Development
+## 🚀 Using Advanced Features
+
+### Plugin System
+
+```python
+from core.plugin_system import get_plugin_manager
+
+manager = get_plugin_manager()
+manager.load_all_plugins()  # Load from plugins/ directory
+
+# Check loaded plugins
+plugins = manager.get_plugin_list()
+print(plugins)
+```
+
+### Advanced Caching
+
+```python
+from core.cache_manager import cache_set, cache_get, get_cache_manager
+
+# Simple get/set
+cache_set("user:123", user_data, ttl=3600)
+user = cache_get("user:123")
+
+# Compute if not cached
+manager = get_cache_manager()
+result = manager.get_or_compute(
+    "expensive_key",
+    compute_fn=lambda: expensive_function(),
+    ttl=1800
+)
+
+# Invalidate patterns
+manager.invalidate_pattern("user:*")  # Clear all user caches
+```
+
+### Feature Flags
+
+```python
+from core.feature_flags import is_feature_enabled, get_feature_manager
+
+manager = get_feature_manager()
+
+# Create flag
+manager.create_flag(
+    "new_dashboard",
+    enabled=False,
+    description="New dashboard UI",
+    rollout_percentage=50  # 50% of users
+)
+
+# Check if enabled
+if is_feature_enabled("new_dashboard", user_id="user123"):
+    # Use new dashboard
+    pass
+
+# Enable for specific user
+manager.add_target_user("new_dashboard", "user123")
+
+# Gradual rollout: increase percentage
+manager.set_rollout("new_dashboard", 75)
+```
+
+### Background Tasks
+
+```python
+from core.background_tasks import enqueue_task, get_task_queue
+
+# Enqueue simple task
+task_id = enqueue_task(
+    send_email,
+    args=(user_email, subject),
+    max_retries=3
+)
+
+# Get task status
+queue = get_task_queue()
+result = queue.get_task_result(task_id)
+
+# Schedule periodic task
+queue.schedule_periodic(
+    cleanup_function,
+    interval=3600,  # Every hour
+    args=(cleanup_dir,)
+)
+```
+
+### Webhooks
+
+```python
+from core.webhooks import WebhookEvent, get_webhook_manager
+
+manager = get_webhook_manager()
+
+# Register webhook
+webhook = manager.register_webhook(
+    url="https://external-service.com/webhook",
+    event=WebhookEvent.USER_LOGIN,
+    name="Login Alert"
+)
+
+# Trigger webhook
+manager.trigger_event(
+    WebhookEvent.USER_LOGIN,
+    data={"user_id": 123, "timestamp": "2026-05-01T12:00:00"}
+)
+
+# List registered webhooks
+webhooks = manager.list_webhooks(WebhookEvent.USER_LOGIN)
+```
+
+### Health Checks
+
+```python
+from core.health_check import get_health_checker
+
+checker = get_health_checker()
+
+# Perform all checks
+health_status = checker.check_all()
+
+# Get overall status
+overall = checker.get_overall_status()  # HEALTHY, DEGRADED, CRITICAL
+
+# Get detailed report
+report = checker.get_report()
+print(f"System Status: {report['overall_status']}")
+```
+
+### Analytics
+
+```python
+from core.analytics import track_user_action, track_error, get_analytics_manager
+
+# Track user actions
+track_user_action("button_clicked", user_id="user123", button_name="submit")
+track_error("database_error", "Connection timeout", error_code="TIMEOUT")
+
+# Get analytics
+manager = get_analytics_manager()
+user_stats = manager.get_user_stats("user123")
+top_events = manager.get_top_events(limit=10)
+report = manager.generate_report()
+```
+
+### Configuration Hot-Reload
+
+```python
+from core.config_hot_reload import get_config_manager
+
+config = get_config_manager()
+
+# Get configuration value
+debug_mode = config.get("app.debug", False)
+db_host = config.get("database.host", "localhost")
+
+# Update configuration
+config.set("app.debug", True)
+config.update({"api.timeout": 30, "api.retries": 3})
+
+# Watch for file changes
+config.start_watching()  # Reloads automatically on changes
+config.stop_watching()
+
+# Rollback
+config.rollback(steps=1)  # Go back 1 revision
+
+# Export configuration
+config.export("config_backup.json")
+```
+
+### API Documentation
+
+```python
+from core.api_documentation import register_endpoint, HTTPMethod, get_api_documentation_generator
+
+# Register endpoints
+users_endpoint = register_endpoint(
+    "/api/users",
+    HTTPMethod.GET,
+    summary="List Users",
+    description="Get list of all users"
+)
+users_endpoint.add_parameter("limit", "integer", False, "Number of results")
+users_endpoint.add_parameter("offset", "integer", False, "Pagination offset")
+
+# Create endpoint
+create_endpoint = register_endpoint(
+    "/api/users",
+    HTTPMethod.POST,
+    summary="Create User"
+)
+create_endpoint.set_request_body({
+    "type": "object",
+    "properties": {
+        "username": {"type": "string"},
+        "email": {"type": "string"}
+    }
+})
+
+# Generate documentation
+gen = get_api_documentation_generator()
+gen.export_to_file("openapi.json")
+gen.export_to_swagger_ui("api_docs")  # Creates interactive UI
+```
+
+## Development Command Reference
 
 ### Creating a New Version Branch
 

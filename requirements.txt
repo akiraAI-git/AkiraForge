@@ -25,6 +25,14 @@ python-dateutil==2.8.2
 # Email (optional, for notifications)
 sendgrid==6.11.0
 
+# Configuration Management
+watchdog==3.0.0
+pyyaml==6.0.1
+tomli==2.0.1
+
+# System Monitoring
+psutil==5.9.6
+
 # Development & Testing (optional)
 pytest==7.4.3
 pytest-cov==4.1.0
@@ -37,4 +45,3 @@ pylint==3.0.3
 # Utilities
 colorama==0.4.6
 tqdm==4.66.1
-pyyaml==6.0.1
