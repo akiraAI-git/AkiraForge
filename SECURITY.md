@@ -129,6 +129,16 @@ All dependencies are regularly scanned for vulnerabilities using:
 
 ## Changelog
 
+### Version 1.1.4(experimental)
+- **New: RESTful API Server** - HTTP/WebSocket API with authentication, rate limiting, and request logging
+- **New: Workflow Automation Engine** - Create automated workflows with triggers, conditions, actions, and state management
+- **New: Collaborative Workspaces** - Team collaboration with real-time sessions, permissions, and activity tracking
+- **New: Data Visualization Engine** - Generate charts, dashboards, and interactive reports (line, bar, pie, scatter, heatmap)
+- **Repository Cleanup**: Moved all non-essential documentation to USER_NOTES/ folder (permanently excluded from git)
+- **Enhanced Documentation Structure**: Only essential docs tracked (README.md, SECURITY.md, CONTRIBUTING.md)
+- **Expanded Scope**: Application now supports integration APIs, workflow automation, team collaboration, beyond just AI builder
+- All previous 1.1.3 features maintained and improved
+
 ### Version 1.1.3(experimental)
 - **New: Advanced Search Engine** - Full-text search with filters and caching
 - **New: Data Export/Import Manager** - Backup and restore data in JSON, CSV, and SQLite formats
