@@ -66,8 +66,8 @@ except:
 class EmailNotifier:
     def __init__(self):
         self.sendgrid_key = os.getenv("SENDGRID_API_KEY")
-        self.admin_email = os.getenv("ADMIN_EMAIL", "admin@akiraforge.local")
-        self.from_email = "security@akiraforge.local"
+        self.admin_email = os.getenv("ADMIN_EMAIL", "akiraforge@outlook.com")
+        self.from_email = "akiraforge@outlook.com"
         self.can_send = SENDGRID_AVAILABLE and bool(self.sendgrid_key)
     
     def send_alert(self, subject: str, body: str, issues: List[Dict]) -> bool:

@@ -42,7 +42,7 @@ class EmailAlertSystem:
         self.smtp_port = smtp_port
         self.smtp_user = os.getenv("SMTP_USER", "")
         self.smtp_password = os.getenv("SMTP_PASSWORD", "")
-        self.admin_email = os.getenv("ADMIN_EMAIL", "admin@akiraforge.local")
+        self.admin_email = os.getenv("ADMIN_EMAIL", "akiraforge@outlook.com")
         
         self.lock = threading.Lock()
         self.alert_queue = []

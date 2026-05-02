@@ -123,8 +123,8 @@ All dependencies are regularly scanned for vulnerabilities using:
 
 ## Security Contacts
 
-- **Security Issues**: security@akiraforge.local
-- **General Support**: support@akiraforge.local
+- **Security Issues**: akiraforge@outlook.com
+- **General Support**: akiraforge@outlook.com
 - **Bug Reports**: https://github.com/akiraAI-git/AkiraForge/issues
 
 ## Changelog
