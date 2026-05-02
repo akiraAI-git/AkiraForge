@@ -129,16 +129,6 @@ All dependencies are regularly scanned for vulnerabilities using:
 
 ## Changelog
 
-### Version 1.1.4(experimental)
-- **New: RESTful API Server** - HTTP/WebSocket API with authentication, rate limiting, and request logging
-- **New: Workflow Automation Engine** - Create automated workflows with triggers, conditions, actions, and state management
-- **New: Collaborative Workspaces** - Team collaboration with real-time sessions, permissions, and activity tracking
-- **New: Data Visualization Engine** - Generate charts, dashboards, and interactive reports (line, bar, pie, scatter, heatmap)
-- **Repository Cleanup**: Moved all non-essential documentation to USER_NOTES/ folder (permanently excluded from git)
-- **Enhanced Documentation Structure**: Only essential docs tracked (README.md, SECURITY.md, CONTRIBUTING.md)
-- **Expanded Scope**: Application now supports integration APIs, workflow automation, team collaboration, beyond just AI builder
-- All previous 1.1.3 features maintained and improved
-
 ### Version 1.1.3(experimental)
 - **New: Advanced Search Engine** - Full-text search with filters and caching
 - **New: Data Export/Import Manager** - Backup and restore data in JSON, CSV, and SQLite formats
@@ -162,8 +152,69 @@ All dependencies are regularly scanned for vulnerabilities using:
 - Audit logging system
 - Device authentication
 
+## Testing & Validation Infrastructure
+
+### Local Testing Tools (NOT in GitHub)
+The following comprehensive testing tools are available locally in `USER_NOTES/` folder:
+
+1. **gui_integration_tester.py**
+   - GUI integration testing simulating real user interactions
+   - Tests all features accessible at user level
+   - Validates backend responses from frontend perspective
+   - Checks for password/secret leakage in UI
+   - Logs comprehensive test results
+
+2. **run_complete_tests.py**
+   - Master test runner coordinating backend + GUI tests
+   - Runs `tester_everything.py` for backend validation
+   - Runs GUI integration tests for frontend validation
+   - Verifies no secrets are exposed in test output
+   - Generates comprehensive integration test report
+
+### Running Tests Locally
+```bash
+# Run complete integration tests (backend + GUI)
+python USER_NOTES/run_complete_tests.py
+
+# Run backend tests only
+python tester_everything.py
+
+# Run GUI tests only
+python USER_NOTES/gui_integration_tester.py
+```
+
+### Test Results Location
+- GUI Test Log: `~/.akiraforge/gui_test.log`
+- GUI Test Results: `~/.akiraforge/gui_test_results.json`
+- Integration Report: `~/.akiraforge/integration_test_report.txt`
+
+### Why Test Files Are Local-Only
+- Test infrastructure may contain temporary credentials
+- Test output may expose diagnostic information
+- GitHub doesn't need development testing infrastructure
+- Keeps repository clean and production-focused
+- Security: Test files are `.gitignore`d permanently
+
+### Test Coverage
+✓ Database connectivity and queries
+✓ Authentication and authorization
+✓ Encryption and key management
+✓ API endpoints and security
+✓ User data isolation
+✓ Workflow automation
+✓ Team collaboration features
+✓ Data visualization
+✓ Password security (no hardcoded secrets)
+✓ API key security (no exposed keys)
+✓ Session management
+✓ Audit logging
+✓ Error handling
+✓ Performance metrics
+✓ Security scanning
+
 ## Additional Resources
 
 - [OWASP: Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices/)
 - [CWE Top 25](https://cwe.mitre.org/top25/2022/)
 - [Python Security Best Practices](https://python.readthedocs.io/en/latest/library/security_warnings.html)
+- GUI Integration Testing Guide: `USER_NOTES/GUI_TESTING_GUIDE.md`
